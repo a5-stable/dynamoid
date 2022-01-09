@@ -307,7 +307,7 @@ module Dynamoid
       @attributes_before_type_cast[name] = value
 
       value_casted = TypeCasting.cast_field(value, self.class.attributes[name])
-      attribute_will_change!(name) if old_value != value_casted # Dirty API
+      attribute_will_change!(name) if old_value != value_casted.presence # Dirty API
 
       attributes[name] = value_casted
     end
